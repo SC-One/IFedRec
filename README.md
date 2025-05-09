@@ -20,7 +20,13 @@ mkdir log
 mkdir sh_result
 
 ## Running the code
-python train.py
+Tested on Windows10 and Ubuntu. (Other platforms should be ok too.)
+``` bash
+#python -m venv Test   # enable venv if you need.
+#Test\Scripts\activate # enable venv if you need.
+pip install requirements.txt # if you are sure that your versions can working right, dont run this line.
+python ./IFedNCF/train.py
+```
 
 ## Citation
 If you find this project helpful, please consider to cite the following paper:

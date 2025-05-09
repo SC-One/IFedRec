@@ -1,7 +1,7 @@
 import numpy as np
 import datetime
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "0" # if you need to disable, uncomment.
 import argparse
 from mlp import MLPEngine
 from utils import *
@@ -81,12 +81,16 @@ engine = MLPEngine(config)
 
 # Logging.
 path = 'log/'
-current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+current_time = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S') # cross platform naming convention.
 logname = os.path.join(path, current_time+'.txt')
+
+os.makedirs(os.path.dirname(logname), exist_ok=True)
+
 initLogging(logname)
 
 # Load Data
-dataset_dir = "../data/" + config['dataset']
+script_dir = os.path.dirname(os.path.abspath(__file__))
+dataset_dir = os.path.normpath(os.path.join(script_dir, "../data", config['dataset'])) # considering anywhere running.
 data_dict = load_data(dataset_dir)
 # train, validation and test data with (uid, iid) dataframe format.
 train_data = data_dict['train']

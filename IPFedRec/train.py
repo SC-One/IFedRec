@@ -1,7 +1,7 @@
 import numpy as np
 import datetime
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "0" # if you need to disable, uncomment.
 import argparse
 from mlp import MLPEngine
 from utils import *
